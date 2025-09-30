@@ -596,7 +596,7 @@ Resultado:
 11 run, 0 failed, 0 error
 ```
 
-## 6. Classes TestLoader e TestRunner
+## 6. Classes TestLoader e TestRunner ✔️
 
 Conforme já mencionamos, o código para execução dos testes está se tornando cada vez maior.
 As classes `TestLoader` e `TestRunner` surgem para resolver esse problema.
