@@ -48,6 +48,38 @@ class TestCaseTest(TestCase):
         spy = TestSpy('test_method')
         spy.run(self.result)
         assert spy.log == "set_up test_method tear_down"
+        
+    def test_assert_true(self):
+        self.assert_true(True)
+        try:
+            self.assert_true(False)
+            assert False 
+        except AssertionError:
+            assert True
+
+    def test_assert_false(self):
+        self.assert_false(False)
+        try:
+            self.assert_false(True)
+            assert False
+        except AssertionError:
+            assert True
+
+    def test_assert_equal(self):
+        self.assert_equal(1, 1)
+        try:
+            self.assert_equal(1, 2)
+            assert False
+        except AssertionError:
+            assert True
+
+    def test_assert_in(self):
+        self.assert_in(1, [1, 2, 3])
+        try:
+            self.assert_in(4, [1, 2, 3])
+            assert False
+        except AssertionError:
+            assert True
 
 class TestSuiteTest(TestCase):
 
@@ -110,11 +142,11 @@ class TestLoaderTest(TestCase):
         names = loader.get_test_case_names(Test)
         assert names == []
 
-print("--- Execução da Seção 7 ---")
+print("--- Execução da Seção 8 ---")
 
 loader = TestLoader()
 
-suite_testcase = loader.make_suite(TestCaseTest)   # 8 testes
+suite_testcase = loader.make_suite(TestCaseTest)   # 12 testes
 suite_testsuite = loader.make_suite(TestSuiteTest) # 3 testes
 suite_testloader = loader.make_suite(TestLoaderTest) # 4 testes
 

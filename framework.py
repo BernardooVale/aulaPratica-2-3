@@ -9,6 +9,22 @@ class TestCase:
     def tear_down(self):
         pass
 
+    def assert_true(self, condition):
+        if not condition:
+            raise AssertionError(f"Expected True, but got False.")
+
+    def assert_false(self, condition):
+        if condition:
+            raise AssertionError(f"Expected False, but got True.")
+
+    def assert_equal(self, expected, actual):
+        if expected != actual:
+            raise AssertionError(f"Expected <{expected}>, but got <{actual}>.")
+
+    def assert_in(self, member, container):
+        if member not in container:
+            raise AssertionError(f"Expected <{member}> to be in <{container}>.")
+
     def run(self, result):
         result.test_started()
         self.set_up()

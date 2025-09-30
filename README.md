@@ -751,7 +751,7 @@ Resultado:
 15 run, 0 failed, 0 error
 ```
 
-## 8. Comandos Assert
+## 8. Comandos Assert ✔️
 
 Implementamos até o momento as principais classes do nosso framework de teste: `TestCase`, `TestRunner`, `TestSuite`, `TestLoader` e `TestRunner`.
 Podemos facilmente executar os testes de uma classe que estende `TestCase` e gerar um relatório simples de saída no forma to `X run, Y failed, Z error`.
