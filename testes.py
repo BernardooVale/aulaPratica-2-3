@@ -1,4 +1,4 @@
-from framework import TestResult, TestCase, TestStub, TestSpy
+from framework import TestResult, TestCase, TestStub, TestSpy, TestSuite
 
 class TestCaseTest(TestCase):
 
@@ -49,18 +49,50 @@ class TestCaseTest(TestCase):
         spy.run(self.result)
         assert spy.log == "set_up test_method tear_down"
 
-print("--- Execução da Seção 4 ---")
+class TestSuiteTest(TestCase):
 
+    def test_suite_size(self):
+        suite = TestSuite()
+        
+        suite.add_test(TestStub('test_success'))
+        suite.add_test(TestStub('test_failure'))
+        suite.add_test(TestStub('test_error'))
+        assert len(suite.tests) == 3
+
+    def test_suite_success_run(self):
+        result = TestResult()
+        suite = TestSuite()
+        suite.add_test(TestStub('test_success'))
+        suite.run(result)
+        assert result.summary() == '1 run, 0 failed, 0 error'
+
+    def test_suite_multiple_run(self):
+        result = TestResult()
+        suite = TestSuite()
+        
+        suite.add_test(TestStub('test_success'))
+        suite.add_test(TestStub('test_failure'))
+        suite.add_test(TestStub('test_error'))
+
+        suite.run(result)
+        assert result.summary() == '3 run, 1 failed, 1 error'
+
+print("--- Execução da Seção 5 ---")
 result = TestResult()
+suite = TestSuite()
 
-TestCaseTest('test_result_success_run').run(result)
-TestCaseTest('test_result_failure_run').run(result)
-TestCaseTest('test_result_error_run').run(result)
-TestCaseTest('test_result_multiple_run').run(result)
+suite.add_test(TestCaseTest('test_result_success_run'))
+suite.add_test(TestCaseTest('test_result_failure_run'))
+suite.add_test(TestCaseTest('test_result_error_run'))
+suite.add_test(TestCaseTest('test_result_multiple_run'))
+suite.add_test(TestCaseTest('test_was_set_up'))
+suite.add_test(TestCaseTest('test_was_run'))
+suite.add_test(TestCaseTest('test_was_tear_down'))
+suite.add_test(TestCaseTest('test_template_method'))
 
-TestCaseTest('test_was_set_up').run(result)
-TestCaseTest('test_was_run').run(result)
-TestCaseTest('test_was_tear_down').run(result)
-TestCaseTest('test_template_method').run(result)
+suite.add_test(TestSuiteTest('test_suite_size'))
+suite.add_test(TestSuiteTest('test_suite_success_run'))
+suite.add_test(TestSuiteTest('test_suite_multiple_run'))
 
+suite.run(result)
 print(result.summary())

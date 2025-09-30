@@ -11,8 +11,7 @@ class TestCase:
 
     def run(self, result):
         result.test_started()
-        self.set_up() 
-
+        self.set_up()
         try:
             test_method = getattr(self, self.test_method_name)
             test_method()
@@ -20,7 +19,6 @@ class TestCase:
             result.add_failure(self.test_method_name)
         except Exception as e:
             result.add_error(self.test_method_name)
-        
         self.tear_down() 
 
 class TestResult:
@@ -48,6 +46,18 @@ class TestResult:
                f'{str(len(self.failures))} {self.FAILURE_MSG}, ' \
                f'{str(len(self.errors))} {self.ERROR_MSG}'
 
+class TestSuite:
+
+    def __init__(self):
+        self.tests = []
+
+    def add_test(self, test):
+        self.tests.append(test)
+
+    def run(self, result):
+        for test in self.tests:
+            test.run(result)
+            
 class TestStub(TestCase):
 
     def test_success(self):
@@ -58,7 +68,7 @@ class TestStub(TestCase):
 
     def test_error(self):
         raise Exception
-
+    
 class TestSpy(TestCase):
 
     def __init__(self, name):
