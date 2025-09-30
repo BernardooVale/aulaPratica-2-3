@@ -723,7 +723,7 @@ Resultado:
 
 Outro ponto importante é que diferentes *runners* podem ser criados (por exemplo, `WebTestRunner`, `JSONTestRunner`, `UITestRunner`, etc.), sem a necessidade de modificar as classes *core* do framework: `TestCase`, `TestSuite` e `TestLoader`.
 
-## 7. Executando Todos os Testes
+## 7. Executando Todos os Testes ✔️
 
 Temos a até o momento três classes de teste: `TestCaseTest` (8 testes), `TestSuiteTest` (3 testes) e `TestLoaderTest` (4 testes).
 

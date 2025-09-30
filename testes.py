@@ -110,9 +110,18 @@ class TestLoaderTest(TestCase):
         names = loader.get_test_case_names(Test)
         assert names == []
 
-print("--- Execução da Seção 6 ---")
+print("--- Execução da Seção 7 ---")
 
 loader = TestLoader()
-suite = loader.make_suite(TestLoaderTest)
+
+suite_testcase = loader.make_suite(TestCaseTest)   # 8 testes
+suite_testsuite = loader.make_suite(TestSuiteTest) # 3 testes
+suite_testloader = loader.make_suite(TestLoaderTest) # 4 testes
+
+master_suite = TestSuite()
+master_suite.add_test(suite_testcase)
+master_suite.add_test(suite_testsuite)
+master_suite.add_test(suite_testloader)
+
 runner = TestRunner()
-runner.run(suite)
+runner.run(master_suite)
