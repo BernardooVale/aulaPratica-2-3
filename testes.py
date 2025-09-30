@@ -1,4 +1,4 @@
-from framework import TestCase
+from framework import TestCase, TestResult
 
 class MyTest(TestCase):
 
@@ -9,20 +9,24 @@ class MyTest(TestCase):
         print('tear_down')
 
     def test_a(self):
-        print('test_a')
+        pass
 
     def test_b(self):
-        print('test_b')
+        pass
 
     def test_c(self):
-        print('test_c')
+        pass
 
-print("--- Execução da Seção 2 ---")
+print("--- Execução da Seção 3 ---")
+result = TestResult()
+
 test = MyTest('test_a')
-test.run()
+test.run(result)
 
 test = MyTest('test_b')
-test.run()
+test.run(result)
 
 test = MyTest('test_c')
-test.run()
+test.run(result)
+
+print(result.summary())

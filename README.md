@@ -186,7 +186,7 @@ test_c
 tear_down
 ```
 
-## 3. Classe TestResult
+## 3. Classe TestResult ✔️
 
 A classe `TestCase` nos permite executar os testes de forma simples, mas não temos nenhuma informação sobre a execução dos testes.
 `TestResult` permite coletar os resultados da execução dos testes.
