@@ -293,7 +293,7 @@ Caso ocorra alguma exceção, então coletamos as falhas e os erros:
 Com isso, concluímos o básico do nosso framework de teste, com as versões iniciais da classe `TestCase` e `TestResult`.
 A seguir, iremos começar a testar o código desenvolvido até o momento.
 
-## 4. Testando TestCase
+## 4. Testando TestCase ✔️
 
 Como testar o framework de teste?
 
@@ -483,7 +483,7 @@ Observe que o código para executar os testes vai crescer à medida que novos te
 Nas próximas seções, iremos criar as classes `TestSuite`, `TestLoader` e `TestRunner` para simplificar a execução dos testes.
 
 
-## 5. Classe TestSuite
+## 5. Classe TestSuite 
 
 `TestSuite` representa uma coleção de casos de testes.
 Por exemplo, com uma suíte de testes, podemos rodar o teste anterior (`TestCaseTest`) da seguinte forma:
